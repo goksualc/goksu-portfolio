@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Navigation from '../../components/Navigation'
 
 export default function Projects() {
   const [isLightMode, setIsLightMode] = useState(false)
@@ -8,57 +9,57 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      name: "outfitease",
+      name: "FinWise",
       year: "2024",
-      tags: ["react", "solana", "fashion", "nft"],
-      description: "A fashion + Web3 platform that combines NFT wearables with real-world fashion recommendations, creating a seamless bridge between digital and physical style.",
-      image: "👗",
-      gif: "https://media.giphy.com/media/example1/giphy.gif"
+      tags: ["swift", "mobile", "finance", "ui-ux", "investment"],
+      description: "FinWise is a personal finance and investment guidance mobile application designed to help users understand their financial profiles, assess their risk tolerance, and receive tailored investment recommendations. The app features an adaptive UI based on user risk categories, in-app educational content and FAQs for beginner investors, and clean mobile-first design focused on usability. I designed and developed the mobile application using Swift, handling both UI/UX and core functionality.",
+      image: "💰",
+      link: "https://github.com/goksualc/Finwise"
     },
     {
       id: 2,
-      name: "finwise",
+      name: "Cryptography and Hashing",
       year: "2024",
-      tags: ["ai", "defi", "python", "blockchain"],
-      description: "Smart fund advisor using AI and blockchain to provide personalized investment strategies and portfolio management for the modern investor.",
-      image: "📊",
-      gif: "https://media.giphy.com/media/example2/giphy.gif"
+      tags: ["cryptography", "security", "algorithms", "privacy"],
+      description: "Explored cryptographic concepts with a focus on hashing algorithms like SHA256. This repository serves as an educational and development platform, covering encryption methods, key cryptosystems, and hashing techniques. Implemented advanced hashing algorithms in Python.",
+      image: "🔐",
+      link: "https://github.com/goksualc/Cryptography-and-Hashing"
     },
     {
       id: 3,
-      name: "sollearn",
-      year: "2023",
-      tags: ["solana", "education", "gaming", "web3"],
-      description: "Interactive learning platform on Solana with gamified education rewards and NFT certificates for achievements.",
-      image: "🎓",
-      gif: "https://media.giphy.com/media/example3/giphy.gif"
+      name: "Cairo",
+      year: "2024",
+      tags: ["starknet", "zk-proofs", "smart contracts", "scaling"],
+      description: "Cairo Giris, award-winning repo for Starknet ECMP. It provides a primer on leveraging StarkNet, a permissionless L2 ZK-Rollup on Ethereum, using Cairo for zero-knowledge cryptographic solutions. It includes tutorials on setup, developing initial programs and smart contracts, emphasizing zero-knowledge proofs for blockchain scalability.",
+      image: "🔷",
+      link: "https://github.com/goksualc/Cairo_Giris"
     },
     {
       id: 4,
-      name: "herdao türkiye",
+      name: "CharmLSP",
       year: "2023",
-      tags: ["community", "dao", "education", "women"],
-      description: "Co-founded H.E.R. DAO Türkiye to foster inclusive spaces in the blockchain ecosystem and empower women in technology.",
-      image: "🌱",
-      gif: "https://media.giphy.com/media/example4/giphy.gif"
+      tags: ["lsp", "web3", "security", "privacy", "cryptography"],
+      description: "CharmLSP is a decentralized Layer Security Protocol (LSP) developed during ETHGlobal Istanbul to improve secure communication and privacy in Web3 applications. We designed a trustless messaging layer using cryptographic primitives, on-chain verification, and privacy-preserving mechanisms. I led the research and brand creation, dev management and smart contracts.",
+      image: "🎯",
+      link: "https://app.buidlbox.io/projects/charmlsp"
     },
     {
       id: 5,
-      name: "zk-identity",
+      name: "Wiser",
       year: "2023",
-      tags: ["zk", "privacy", "solidity", "ethereum"],
-      description: "Zero-knowledge proof system for decentralized identity verification with privacy-preserving authentication.",
-      image: "🔐",
-      gif: "https://media.giphy.com/media/example5/giphy.gif"
+      tags: ["betting", "vrf", "governance", "blockchain"],
+      description: "Wiser is a fully on-chain, community-driven crypto betting platform ensuring transparency and fairness through VRF, shared bankrolls, decentralized governance, and blockchain security. Future features include social interaction and AI assistance.",
+      image: "🧠",
+      link: "https://ethglobal.com/showcase/wiser-e9brh"
     },
     {
       id: 6,
-      name: "creative coding",
-      year: "2022",
-      tags: ["p5.js", "generative", "art", "interactive"],
-      description: "Collection of generative art experiments and interactive installations exploring the intersection of code and creativity.",
-      image: "🎨",
-      gif: "https://media.giphy.com/media/example6/giphy.gif"
+      name: "SolLearn",
+      year: "2023",
+      tags: ["solana", "education", "nft", "hackathon"],
+      description: "SolLearn is an award-winning learn-to-earn dApp on Solana that won the UpSchool Hackathon. It offers decentralized education with NFT certifications for completed training, merging learning and earning on the blockchain.",
+      image: "🎓",
+      link: "https://github.com/goksualc/SolLearn"
     }
   ]
 
@@ -87,19 +88,7 @@ export default function Projects() {
   return (
     <>
       {/* Navigation */}
-      <nav className="nav-container">
-        <div className="nav-menu">
-          <Link href="/" className="nav-item">
-            HOME
-          </Link>
-          <Link href="/projects" className="nav-item active">
-            PROJECTS
-          </Link>
-          <Link href="/blog" className="nav-item">
-            BLOG
-          </Link>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Light Mode Toggle */}
       <button 
@@ -115,6 +104,64 @@ export default function Projects() {
       <div className="golden-star star-2">★</div>
       <div className="golden-star star-3">★</div>
       <div className="golden-star star-4">★</div>
+      <div className="golden-star star-5">★</div>
+      <div className="golden-star star-6">★</div>
+      <div className="golden-star star-7">★</div>
+      <div className="golden-star star-8">★</div>
+      <div className="golden-star star-9">★</div>
+      <div className="golden-star star-10">★</div>
+      <div className="golden-star star-11">★</div>
+      <div className="golden-star star-12">★</div>
+      <div className="golden-star star-13">★</div>
+      <div className="golden-star star-14">★</div>
+      <div className="golden-star star-15">★</div>
+      <div className="golden-star star-16">★</div>
+      <div className="golden-star star-17">★</div>
+      <div className="golden-star star-18">★</div>
+      <div className="golden-star star-19">★</div>
+      <div className="golden-star star-20">★</div>
+      <div className="golden-star star-21">★</div>
+      <div className="golden-star star-22">★</div>
+      <div className="golden-star star-23">★</div>
+      <div className="golden-star star-24">★</div>
+      <div className="golden-star star-25">★</div>
+      <div className="golden-star star-26">★</div>
+      <div className="golden-star star-27">★</div>
+      <div className="golden-star star-28">★</div>
+      <div className="golden-star star-29">★</div>
+      <div className="golden-star star-30">★</div>
+      <div className="golden-star star-31">★</div>
+      <div className="golden-star star-32">★</div>
+      <div className="golden-star star-33">★</div>
+      <div className="golden-star star-34">★</div>
+      <div className="golden-star star-35">★</div>
+      
+      {/* Yellow Hearts */}
+      <div className="yellow-heart heart-1">♥</div>
+      <div className="yellow-heart heart-2">♥</div>
+      <div className="yellow-heart heart-3">♥</div>
+      <div className="yellow-heart heart-4">♥</div>
+      <div className="yellow-heart heart-5">♥</div>
+      <div className="yellow-heart heart-6">♥</div>
+      <div className="yellow-heart heart-7">♥</div>
+      <div className="yellow-heart heart-8">♥</div>
+      <div className="yellow-heart heart-9">♥</div>
+      <div className="yellow-heart heart-10">♥</div>
+      <div className="yellow-heart heart-11">♥</div>
+      <div className="yellow-heart heart-12">♥</div>
+      <div className="yellow-heart heart-13">♥</div>
+      <div className="yellow-heart heart-14">♥</div>
+      <div className="yellow-heart heart-15">♥</div>
+      
+      {/* Sparkles */}
+      <div className="sparkle sparkle-1">✨</div>
+      <div className="sparkle sparkle-2">✨</div>
+      <div className="sparkle sparkle-3">✨</div>
+      <div className="sparkle sparkle-4">✨</div>
+      <div className="sparkle sparkle-5">✨</div>
+      <div className="sparkle sparkle-6">✨</div>
+      <div className="sparkle sparkle-7">✨</div>
+      <div className="sparkle sparkle-8">✨</div>
 
       {/* Projects Hero */}
       <section className="projects-hero">
@@ -134,9 +181,6 @@ export default function Projects() {
             >
               <div className="project-image">
                 <span className="project-emoji">{project.image}</span>
-                <div className="project-gif-overlay">
-                  <img src={project.gif} alt={project.name} />
-                </div>
               </div>
               
               <div className="project-info">
@@ -152,6 +196,19 @@ export default function Projects() {
                     <span key={tag} className="project-tag">{tag}</span>
                   ))}
                 </div>
+                
+                {project.link && project.link !== "#" && (
+                  <div className="project-link">
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link-button"
+                    >
+                      🔗 View Project
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}

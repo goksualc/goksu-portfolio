@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
+import Navigation from '../components/Navigation'
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0)
@@ -66,19 +66,7 @@ export default function Home() {
   return (
     <>
       {/* Navigation */}
-      <nav className="nav-container">
-        <div className="nav-menu">
-          <Link href="/" className="nav-item active">
-            HOME
-          </Link>
-          <Link href="/projects" className="nav-item">
-            PROJECTS
-          </Link>
-          <Link href="/blog" className="nav-item">
-            BLOG
-          </Link>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Scroll Indicator */}
       <div className="scroll-indicator">
@@ -161,7 +149,7 @@ export default function Home() {
           
           <div className="hero-content">
             <div className="falling-star">✨</div>
-            <h1 className="hero-title">gok's portfolio</h1>
+            <h1 className="hero-title">gok&apos;s portfolio</h1>
             
             <div className="hero-sections">
               <div className="hero-left">
@@ -271,19 +259,19 @@ export default function Home() {
                 <div className="skill-item">
                   <div className="skill-icon">💻</div>
                   <h3 className="skill-title">Development</h3>
-                  <p className="skill-description">Solana, React, Web3, TypeScript</p>
+                  <p className="skill-description">TypeScript • React • Frontend Architecture • Rust • Swift</p>
                 </div>
                 
                 <div className="skill-item">
                   <div className="skill-icon">🎨</div>
                   <h3 className="skill-title">Design</h3>
-                  <p className="skill-description">UI/UX, Creative Coding, Visual Design</p>
+                  <p className="skill-description">Social Media Design</p>
                 </div>
                 
                 <div className="skill-item">
                   <div className="skill-icon">🌱</div>
                   <h3 className="skill-title">Community</h3>
-                  <p className="skill-description">Mentoring, Education, Event Organization</p>
+                  <p className="skill-description">Mentoring teams at hackathons • Building developer-focused communities • Onboarding Web2 developers to Web3</p>
                 </div>
               </div>
             </div>

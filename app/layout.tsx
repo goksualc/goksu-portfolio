@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Portfolio & Vibes - Purrcat Studio",
   description: "A whimsical and retro portfolio website showcasing creative work at the intersection of technology and art",
+  icons: {
+    icon: '/images/owl.png',
+  },
 };
 
 export default function RootLayout({

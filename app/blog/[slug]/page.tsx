@@ -1,7 +1,8 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import Navigation from '../../../components/Navigation'
 
 export default function BlogPost() {
   const params = useParams()
@@ -291,7 +292,7 @@ export default function BlogPost() {
     return (
       <div className="blog-post-not-found">
         <h1>Post Not Found ✨</h1>
-        <p>The blog post you're looking for doesn't exist.</p>
+        <p>The blog post you&apos;re looking for doesn&apos;t exist.</p>
         <Link href="/blog" className="back-button">
           ← back to blog ♡
         </Link>
@@ -308,35 +309,7 @@ export default function BlogPost() {
       <div className="golden-star star-4">★</div>
       
       {/* Navigation */}
-      <nav className="nav-container">
-        <ul className="nav-menu">
-          <li>
-            <Link href="/" className="nav-item">
-              home
-            </Link>
-          </li>
-          <li>
-            <Link href="/#about-hero" className="nav-item">
-              about
-            </Link>
-          </li>
-          <li>
-            <Link href="/projects" className="nav-item">
-              projects
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog" className="nav-item active">
-              blog
-            </Link>
-          </li>
-          <li>
-            <Link href="/#contact" className="nav-item">
-              contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <Navigation />
 
       {/* Blog Post Hero */}
       <section className="blog-post-hero">
