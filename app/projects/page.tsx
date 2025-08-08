@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Navigation from '../../components/Navigation'
 
 export default function Projects() {
-  const [isLightMode, setIsLightMode] = useState(false)
 
   const projects = [
     {
@@ -80,24 +79,14 @@ export default function Projects() {
     return () => observer.disconnect()
   }, [])
 
-  const toggleLightMode = () => {
-    setIsLightMode(!isLightMode)
-    document.documentElement.classList.toggle('light-mode')
-  }
+
 
   return (
     <>
       {/* Navigation */}
       <Navigation />
 
-      {/* Light Mode Toggle */}
-      <button 
-        className="light-mode-toggle"
-        onClick={toggleLightMode}
-        aria-label="Toggle light mode"
-      >
-        {isLightMode ? '🌙' : '☀️'}
-      </button>
+
 
       {/* Decorative Elements */}
       <div className="golden-star star-1">★</div>

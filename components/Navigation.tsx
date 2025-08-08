@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -26,6 +27,11 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
+
   const navItems = [
     { href: '/', label: 'HOME' },
     { href: '/projects', label: 'PROJECTS' },
@@ -34,9 +40,14 @@ export default function Navigation() {
     { href: '/blog', label: 'BLOG' }
   ]
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
     <nav className={`nav-container ${!isVisible ? 'nav-hidden' : ''}`}>
-      <div className="nav-menu">
+      {/* Desktop Navigation */}
+      <div className="nav-menu desktop-nav">
         {navItems.map((item) => (
           <Link 
             key={item.href}
@@ -46,6 +57,37 @@ export default function Navigation() {
             {item.label}
           </Link>
         ))}
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="mobile-nav">
+        {/* Hamburger Button */}
+        <button 
+          className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-content">
+            {navItems.map((item) => (
+              <Link 
+                key={item.href}
+                href={item.href} 
+                className={`mobile-nav-item ${pathname === item.href ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-icon">✨</span>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </nav>
   )
