@@ -1,7 +1,78 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
+
+// Define TypeScript interfaces for experience items
+interface BaseExperience {
+  id: number;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  tags: string[];
+  emoji: string;
+}
+
+interface ConferenceExperience extends BaseExperience {
+  role: string;
+  image?: string;
+  company?: string;
+  event?: string;
+  website?: string;
+}
+
+interface HackathonExperience extends BaseExperience {
+  role: string;
+  image?: string;
+  company?: string;
+  event?: string;
+  website?: string;
+  links?: {
+    github?: string;
+    youtube?: string;
+  };
+}
+
+interface SpeechExperience extends BaseExperience {
+  event: string;
+  image?: string;
+  company?: string;
+  role?: string;
+  website?: string;
+}
+
+interface WorkExperience extends BaseExperience {
+  company: string;
+  role: string;
+  image?: string;
+  website?: string;
+  event?: string;
+}
+
+interface WorkshopExperience extends BaseExperience {
+  event: string;
+  images: string[];
+  image?: string;
+  company?: string;
+  role?: string;
+  website?: string;
+}
+
+interface AllExperience extends BaseExperience {
+  category: string;
+  categoryEmoji: string;
+  company?: string;
+  event?: string;
+  role?: string;
+  image?: string;
+  website?: string;
+  images?: string[];
+  links?: {
+    github?: string;
+    youtube?: string;
+  };
+}
 
 export default function Experiences() {
   const [activeTab, setActiveTab] = useState('all-experiences')
@@ -327,7 +398,7 @@ export default function Experiences() {
   ]
 
   // Combine all experiences and shuffle them randomly
-  const allExperiences = [
+  const allExperiences: AllExperience[] = [
     // Conferences
     ...conferences.map(conf => ({
       ...conf,
@@ -361,68 +432,78 @@ export default function Experiences() {
   ]
 
   // Fisher-Yates shuffle algorithm
-  const shuffleArray = (array: any[]) => {
-    const shuffled = [...array]
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    try {
+      const shuffled = [...array]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      return shuffled
+    } catch (error) {
+      console.error('Error shuffling array:', error)
+      return array // Return original array if shuffle fails
     }
-    return shuffled
   }
 
-  const shuffledExperiences = shuffleArray(allExperiences)
+  const shuffledExperiences = useMemo(() => {
+    try {
+      return shuffleArray(allExperiences)
+    } catch (error) {
+      console.error('Error creating shuffled experiences:', error)
+      return allExperiences // Return original array if shuffle fails
+    }
+  }, [allExperiences])
 
   useEffect(() => {
     // Add fade-in animation for experience cards
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
+    try {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      }, { threshold: 0.1 })
+
+      // Small delay to ensure DOM is updated
+      const timeoutId = setTimeout(() => {
+        try {
+          const cards = document.querySelectorAll('.experience-card')
+          cards.forEach(card => {
+            observer.observe(card)
+          })
+        } catch (error) {
+          console.error('Error observing cards:', error)
         }
-      })
-    }, { threshold: 0.1 })
+      }, 200)
 
-    // Small delay to ensure DOM is updated
-    const timeoutId = setTimeout(() => {
-      const cards = document.querySelectorAll('.experience-card')
-      console.log('Found cards:', cards.length)
-      cards.forEach(card => {
-        observer.observe(card)
-      })
-    }, 200)
-
-    return () => {
-      clearTimeout(timeoutId)
-      observer.disconnect()
+      return () => {
+        clearTimeout(timeoutId)
+        observer.disconnect()
+      }
+    } catch (error) {
+      console.error('Error setting up intersection observer:', error)
     }
   }, [])
 
   // Handle tab switching - make cards visible immediately when tab changes
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      const cards = document.querySelectorAll('.experience-card')
-      cards.forEach(card => {
-        card.classList.add('visible')
-      })
+      try {
+        const cards = document.querySelectorAll('.experience-card')
+        cards.forEach(card => {
+          card.classList.add('visible')
+        })
+      } catch (error) {
+        console.error('Error making cards visible:', error)
+      }
     }, 100)
 
     return () => clearTimeout(timeoutId)
   }, [activeTab])
 
-  const renderExperienceCards = (items: Array<{
-    id: number;
-    title: string;
-    company?: string;
-    event?: string;
-    date: string;
-    location: string;
-    role?: string;
-    description: string;
-    tags: string[];
-    emoji: string;
-    image?: string;
-    website?: string;
-  }>) => {
+  const renderExperienceCards = (items: Array<ConferenceExperience | HackathonExperience | SpeechExperience | WorkExperience | WorkshopExperience>) => {
     return items.map((item, index) => (
       <div 
         key={item.id} 
@@ -488,7 +569,7 @@ export default function Experiences() {
     ))
   }
 
-  const renderAllExperienceCards = (items: Array<any>) => {
+  const renderAllExperienceCards = (items: Array<AllExperience>) => {
     return items.map((item, index) => (
       <div 
         key={`${item.category}-${item.id}`} 
