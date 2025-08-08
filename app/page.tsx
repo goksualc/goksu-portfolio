@@ -156,7 +156,7 @@ export default function Home() {
                 <p className="hero-subtitle">
                   ✨ Welcome to My Portfolio ✨<br/>
                   Hi there! I&apos;m so glad you&apos;re here 🌸<br/><br/>
-                  This is my little corner of the internet — a space to share who I am, what I do, and what inspires me.<br/>
+                  This is my little corner of the internet a space to share who I am, what I do, and what inspires me.<br/>
                   You&apos;ll find my journey through tech, projects I&apos;ve built, and the milestones that shaped me.<br/><br/>
                   Let&apos;s connect, collaborate, and create something meaningful! 💛<br/>
                 </p>
