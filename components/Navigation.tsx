@@ -32,6 +32,31 @@ export default function Navigation() {
     setIsMobileMenuOpen(false)
   }, [pathname])
 
+  // Handle body overflow when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open')
+    } else {
+      document.body.classList.remove('mobile-menu-open')
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('mobile-menu-open')
+    }
+  }, [isMobileMenuOpen])
+
+  // Close on Escape for accessibility
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false)
+    }
+    if (isMobileMenuOpen) {
+      window.addEventListener('keydown', onKeyDown)
+    }
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isMobileMenuOpen])
+
   const navItems = [
     { href: '/', label: 'HOME' },
     { href: '/projects', label: 'PROJECTS' },
@@ -66,6 +91,8 @@ export default function Navigation() {
           className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
@@ -73,8 +100,21 @@ export default function Navigation() {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="mobile-menu-content">
+        <div 
+          id="mobile-menu"
+          className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="mobile-menu-close" 
+              aria-label="Close mobile menu" 
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              ✕
+            </button>
             {navItems.map((item) => (
               <Link 
                 key={item.href}

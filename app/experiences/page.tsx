@@ -177,6 +177,18 @@ export default function Experiences() {
       emoji: "🌉",
       image: "/images/experiences/hackathon-istanbul.jpg"
     }
+    ,
+    {
+      id: 9,
+      title: "Breakpoint: Solana Hacker House & Conference",
+      date: "2023",
+      location: "Lisbon, Portugal",
+      role: "Sponsored Attendee",
+      description: "Sponsored by the Solana Foundation, I attended Breakpoint and the Solana Hacker House, engaging deeply with the developer ecosystem, exploring new tooling, and building alongside innovative teams.",
+      tags: ["solana", "breakpoint", "hacker house", "conference"],
+      emoji: "⚡",
+      image: "/images/experiences/solana-breakpoint.jpg"
+    }
   ]
 
   const hackathons = [
@@ -384,17 +396,7 @@ export default function Experiences() {
       emoji: "💪",
       images: ["/images/experiences/turkish-workshop.jpg"]
     },
-    {
-      id: 5,
-      title: "Breakpoint: Solana Hacker House & Conference",
-      event: "Solana Foundation",
-      date: "2023",
-      location: "Lisbon, Portugal",
-      description: "Sponsored by the Solana Foundation, I had the opportunity to attend the Breakpoint Conference and Solana Hacker House. During this experience, I engaged with the Solana developer ecosystem, explored new tooling, and built alongside some of the most innovative minds in the space. This experience deepened my understanding of Solana's high-performance infrastructure and ecosystem.",
-      tags: ["solana", "breakpoint", "hacker house", "sponsored", "foundation support", "high performance"],
-      emoji: "⚡",
-      images: ["/images/experiences/solana-breakpoint.jpg", "/images/experiences/solanau.jpg"]
-    }
+    
   ]
 
   // Combine all experiences and shuffle them randomly

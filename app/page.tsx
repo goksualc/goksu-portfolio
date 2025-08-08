@@ -155,16 +155,10 @@ export default function Home() {
               <div className="hero-left">
                 <p className="hero-subtitle">
                   ✨ Welcome to My Portfolio ✨<br/>
-                  Hi there! I&apos;m so glad you&apos;re here 🌸<br/>
-                  This website is my little corner of the internet where you can get to know me and explore my journey in tech and beyond. Here, you&apos;ll find:<br/><br/>
-                  Who I am, what I do, and what inspires me.<br/>
-                  My academic background and learning journey.<br/>
-                  Roles, projects, and milestones that shaped me.<br/>
-                  A showcase of the work I&apos;ve built and contributed to.<br/>
-                  My thoughts, insights, and stories about technology, life, and creativity.<br/>
-                  How I can help you or collaborate with you.<br/><br/>
-                  Let&apos;s connect and create something meaningful together!<br/>
-                  Take your time, explore, and enjoy the ride 💛<br/>
+                  Hi there! I&apos;m so glad you&apos;re here 🌸<br/><br/>
+                  This is my little corner of the internet — a space to share who I am, what I do, and what inspires me.<br/>
+                  You&apos;ll find my journey through tech, projects I&apos;ve built, and the milestones that shaped me.<br/><br/>
+                  Let&apos;s connect, collaborate, and create something meaningful! 💛<br/>
                 </p>
               </div>
               
