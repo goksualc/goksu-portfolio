@@ -183,7 +183,7 @@ export default function Home() {
                   <img src="/videos/daisy.gif" alt="Daisy" className="daisy-gif daisy-left" />
                   <img src="/videos/daisy.gif" alt="Daisy" className="daisy-gif daisy-right" />
                   <div className="designer-title">Goksu♡</div>
-                  <div className="designer-subtitle"> Security Engineer</div>
+                  <div className="designer-subtitle"> Computer Engineer</div>
                 </div>
               </RevealOnScroll>
             </div>
