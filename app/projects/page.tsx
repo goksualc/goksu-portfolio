@@ -1,9 +1,34 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
+import { RevealOnScroll, RevealList } from '../../components/RevealOnScroll'
 
 export default function Projects() {
+  const avatarRef = useRef<HTMLImageElement | null>(null)
+  // const floatersRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    const el = avatarRef.current
+    if (!el) return
+
+    const jitter = () => {
+      const dx = (Math.random() * 12 - 6).toFixed(2)
+      const dy = (Math.random() * 12 - 6).toFixed(2)
+      const r = (Math.random() * 6 - 3).toFixed(2)
+      el.style.transform = `translate(${dx}px, ${dy}px) rotate(${r}deg)`
+    }
+
+    // initial and interval
+    jitter()
+    const id = setInterval(jitter, 1200)
+    return () => clearInterval(id)
+  }, [])
+
+  // Removed background floaters per request
 
   const projects = [
     {
@@ -154,53 +179,50 @@ export default function Projects() {
 
       {/* Projects Hero */}
       <section className="projects-hero">
-        <div className="projects-hero-content">
-          <h1 className="projects-title">projects ✨</h1>
-        </div>
+        <RevealOnScroll as="div" className="projects-hero-content projects-hero-content--relative">
+          <div className="projects-hero-row">
+            <img ref={avatarRef} src="/images/gok.png" alt="Goksu" className="projects-hero-avatar" />
+            <h1 className="projects-title">projects ✨</h1>
+          </div>
+        </RevealOnScroll>
       </section>
 
       {/* Projects Grid */}
       <section className="projects-grid-section">
         <div className="projects-grid">
-          {projects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className="project-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="project-image">
-                <span className="project-emoji">{project.image}</span>
-              </div>
-              
-              <div className="project-info">
-                <div className="project-header">
-                  <h2 className="project-name">{project.name}</h2>
-                  <span className="project-year">{project.year}</span>
+          <RevealList itemAs="div">
+            {projects.map((project) => (
+              <div key={project.id} className="project-card">
+                <div className="project-image">
+                  <span className="project-emoji">{project.image}</span>
                 </div>
                 
-                <p className="project-description">{project.description}</p>
-                
-                <div className="project-tags">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="project-tag">{tag}</span>
-                  ))}
-                </div>
-                
-                {project.link && project.link !== "#" && (
-                  <div className="project-link">
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="project-link-button"
-                    >
-                      🔗 View Project
-                    </a>
+                <div className="project-info">
+                  <div className="project-header">
+                    <h2 className="project-name">{project.name}</h2>
+                    <span className="project-year">{project.year}</span>
                   </div>
-                )}
+                  
+                  <p className="project-description">{project.description}</p>
+                  
+                  {/* Tags removed per request */}
+                  
+                  {project.link && project.link !== "#" && (
+                    <div className="project-link">
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="project-link-button"
+                      >
+                        🔗 View Project
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </RevealList>
         </div>
       </section>
 

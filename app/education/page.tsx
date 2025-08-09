@@ -2,6 +2,7 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
+import { RevealOnScroll, RevealList } from '../../components/RevealOnScroll'
 
 export default function Education() {
   const educationEntries = [
@@ -32,8 +33,17 @@ export default function Education() {
       location: "Istanbul, Türkiye",
       period: "October 2021 – June 2025",
       emoji: "🛠️",
-      description: "Capstone project: Finwise – a personal budgeting & expense tracking platform",
-      tags: ["computer-engineering", "bachelor", "scholarship", "capstone"]
+      description: "Capstone Project — FinWise: A personal finance and investment guidance mobile app that helps users understand their financial profiles, assess risk tolerance, and receive tailored investment recommendations.",
+      capstone: {
+        title: "Capstone Project: FinWise",
+        summary: "FinWise delivers beginner-friendly investing guidance with an adaptive interface based on user risk categories. It includes in‑app educational content, FAQs, and a clean mobile‑first design.",
+        highlights: [
+          "Adaptive UI for different risk profiles",
+          "In‑app education, FAQs, and guided tips",
+          "Swift app with polished mobile-first UX"
+        ],
+        github: "https://github.com/goksualc/Finwise"
+      }
     }
   ]
 
@@ -133,23 +143,25 @@ export default function Education() {
 
       {/* Hero Section */}
       <section className="education-hero-section">
-        <div className="education-hero-content">
+        <RevealOnScroll as="div" className="education-hero-content">
           <h1 className="education-hero-title">education ✨</h1>
           <p className="education-hero-subtitle">
             My academic journey through computer science and engineering, from undergraduate to graduate studies.
           </p>
-        </div>
+          <div className="education-hero-row">
+            <img src="/images/bau.png" alt="BAU" className="edu-badge" />
+            <img src="/images/brooklyn.png" alt="Brooklyn College" className="edu-badge" />
+            <img src="/images/cuny.png" alt="CUNY" className="edu-badge" />
+          </div>
+        </RevealOnScroll>
       </section>
 
       {/* Education Content */}
       <section className="education-content-section">
         <div className="education-grid">
-          {educationEntries.map((entry, index) => (
-            <div 
-              key={entry.id} 
-              className="education-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          <RevealList itemAs="div">
+            {educationEntries.map((entry) => (
+            <div key={entry.id} className="education-card">
               <div className="education-header">
                 <div className="education-emoji">{entry.emoji}</div>
                 <div className="education-title-section">
@@ -167,14 +179,34 @@ export default function Education() {
               {entry.description && (
                 <p className="education-description">{entry.description}</p>
               )}
-              
-              <div className="education-tags">
-                {entry.tags.map((tag) => (
-                  <span key={tag} className="education-tag">{tag}</span>
-                ))}
-              </div>
+
+              {/* Capstone details for BAU */}
+              {'capstone' in entry && entry.capstone && (
+                <div className="capstone-project-section">
+                  <h4 className="capstone-title">{entry.capstone.title}</h4>
+                  <p className="capstone-summary">{entry.capstone.summary}</p>
+                  <ul className="capstone-highlights">
+                    {entry.capstone.highlights.map((h: string, i: number) => (
+                      <li key={i} className="capstone-highlight">• {h}</li>
+                    ))}
+                  </ul>
+                  <div className="capstone-project-link">
+                    <a
+                      href={entry.capstone.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="capstone-project-github-link"
+                      aria-label="Open FinWise GitHub repository"
+                    >
+                      <span className="capstone-project-github-icon">💻</span>
+                      View on GitHub
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
-          ))}
+            ))}
+          </RevealList>
         </div>
       </section>
 

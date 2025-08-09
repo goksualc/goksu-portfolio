@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
+import { RevealOnScroll } from '../../components/RevealOnScroll'
 
 export default function Blog() {
   const [cursorVisible, setCursorVisible] = useState(true)
@@ -60,7 +61,7 @@ export default function Blog() {
       {/* Main Content */}
       <main className="blog-coming-soon">
         <div className="blog-coming-soon-container">
-          <div className="blog-coming-soon-content">
+          <RevealOnScroll as="div" className="blog-coming-soon-content">
             <h1 className="blog-coming-soon-title">
               My thoughts, stories, and guides
               <span className={`typing-cursor ${cursorVisible ? 'visible' : ''}`}>|</span>
@@ -80,7 +81,7 @@ export default function Blog() {
                 <div className="pixel-corner bottom-right"></div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </main>
 

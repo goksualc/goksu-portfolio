@@ -6,20 +6,16 @@ import { usePathname } from 'next/navigation'
 export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
-      // Show navigation only at the top of the page
-      if (currentScrollY <= 100) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
-      
+      // Keep nav present but mark scrolled state for styling
+      setIsVisible(true)
+      setIsScrolled(currentScrollY > 40)
       setLastScrollY(currentScrollY)
     }
 
@@ -70,7 +66,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className={`nav-container ${!isVisible ? 'nav-hidden' : ''}`}>
+    <nav className={`nav-container ${!isVisible ? 'nav-hidden' : ''} ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
       {/* Desktop Navigation */}
       <div className="nav-menu desktop-nav">
         {navItems.map((item) => (

@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import Navigation from '../../components/Navigation'
+import { RevealOnScroll, RevealList } from '../../components/RevealOnScroll'
 
 // Define TypeScript interfaces for experience items
 interface BaseExperience {
@@ -658,12 +659,12 @@ export default function Experiences() {
 
       {/* Experiences Hero */}
       <section className="experiences-hero">
-        <div className="experiences-hero-content">
+        <RevealOnScroll as="div" className="experiences-hero-content">
           <h1 className="experiences-title">experiences ✨</h1>
           <p className="experiences-subtitle">
             My journey through conferences, hackathons, speeches, and work experiences in the blockchain and Web3 space.
           </p>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Tab Navigation */}
@@ -888,15 +889,19 @@ export default function Experiences() {
                 A random mix of all my experiences across conferences, hackathons, speeches, work, and workshops
               </p>
             </div>
-            <div className="all-experiences-grid">
+          <div className="all-experiences-grid">
+            <RevealList itemAs="div">
               {renderAllExperienceCards(shuffledExperiences)}
-            </div>
+            </RevealList>
+          </div>
           </div>
         ) : (
           <div className="experiences-grid">
-            {activeTab === 'conferences' && renderExperienceCards(conferences)}
-            {activeTab === 'hackathons' && renderExperienceCards(hackathons)}
-            {activeTab === 'speeches' && renderExperienceCards(speeches)}
+            <RevealList itemAs="div">
+              {activeTab === 'conferences' && renderExperienceCards(conferences)}
+              {activeTab === 'hackathons' && renderExperienceCards(hackathons)}
+              {activeTab === 'speeches' && renderExperienceCards(speeches)}
+            </RevealList>
           </div>
         )}
       </section>

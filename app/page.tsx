@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Navigation from '../components/Navigation'
+import { RevealOnScroll, RevealList } from '../components/RevealOnScroll'
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0)
@@ -147,12 +148,12 @@ export default function Home() {
           {/* Wave Pattern */}
           <div className="wave-pattern"></div>
           
-          <div className="hero-content">
+          <RevealOnScroll as="div" className="hero-content">
             <div className="falling-star">✨</div>
-            <h1 className="hero-title">gok&apos;s portfolio</h1>
+            <RevealOnScroll as="h1" className="hero-title">gok&apos;s portfolio</RevealOnScroll>
             
             <div className="hero-sections">
-              <div className="hero-left">
+              <RevealOnScroll as="div" className="hero-left">
                 <p className="hero-subtitle">
                   ✨ Welcome to My Portfolio ✨<br/>
                   Hi there! I&apos;m so glad you&apos;re here 🌸<br/><br/>
@@ -160,9 +161,9 @@ export default function Home() {
                   You&apos;ll find my journey through tech, projects I&apos;ve built, and the milestones that shaped me.<br/><br/>
                   Let&apos;s connect, collaborate, and create something meaningful! 💛<br/>
                 </p>
-              </div>
+              </RevealOnScroll>
               
-              <div className="hero-right">
+              <RevealOnScroll as="div" className="hero-right">
                 <div className="designer-photo-container">
                   <div className="designer-photo-placeholder">
                     <video 
@@ -184,9 +185,9 @@ export default function Home() {
                   <div className="designer-title">Goksu♡</div>
                   <div className="designer-subtitle"> Security Engineer</div>
                 </div>
-              </div>
+              </RevealOnScroll>
             </div>
-          </div>
+          </RevealOnScroll>
         </section>
 
         {/* About Me Section */}
