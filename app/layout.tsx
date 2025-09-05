@@ -3,7 +3,7 @@ import "./globals.css";
 import PageTransition from "../components/PageTransition";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Vibes - Purrcat Studio",
+  title: "Portfolio & Vibes",
   description: "A whimsical and retro portfolio website showcasing creative work at the intersection of technology and art",
   icons: {
     icon: '/images/owl.png',
