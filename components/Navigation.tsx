@@ -4,54 +4,34 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isNavVisible, setIsNavVisible] = useState(true)
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      // Keep nav present but mark scrolled state for styling
-      setIsVisible(true)
-      setIsScrolled(currentScrollY > 40)
-      setLastScrollY(currentScrollY)
+    const hero = document.getElementById('hero')
+    const fallbackThreshold = 100
+
+    if (hero) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsNavVisible(entry.isIntersecting)
+        },
+        {
+          threshold: 0,
+          rootMargin: '0px 0px -5% 0px',
+        }
+      )
+      observer.observe(hero)
+      return () => observer.disconnect()
     }
 
+    const handleScroll = () => {
+      setIsNavVisible(window.scrollY < fallbackThreshold)
+    }
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false)
   }, [pathname])
-
-  // Handle body overflow when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.classList.add('mobile-menu-open')
-    } else {
-      document.body.classList.remove('mobile-menu-open')
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.classList.remove('mobile-menu-open')
-    }
-  }, [isMobileMenuOpen])
-
-  // Close on Escape for accessibility
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false)
-    }
-    if (isMobileMenuOpen) {
-      window.addEventListener('keydown', onKeyDown)
-    }
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [isMobileMenuOpen])
 
   const navItems = [
     { href: '/', label: 'HOME' },
@@ -61,12 +41,8 @@ export default function Navigation() {
     { href: '/blog', label: 'BLOG' }
   ]
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
   return (
-    <nav className={`nav-container ${!isVisible ? 'nav-hidden' : ''} ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
+    <nav className={`nav-container ${!isNavVisible ? 'nav-hidden' : ''}`} aria-hidden={!isNavVisible}>
       {/* Desktop Navigation */}
       <div className="nav-menu desktop-nav">
         {navItems.map((item) => (
@@ -80,49 +56,18 @@ export default function Navigation() {
         ))}
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - show all items directly, no hamburger */}
       <div className="mobile-nav">
-        {/* Hamburger Button */}
-        <button 
-          className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-menu"
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          id="mobile-menu"
-          className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="mobile-menu-close" 
-              aria-label="Close mobile menu" 
-              onClick={() => setIsMobileMenuOpen(false)}
+        <div className="nav-menu">
+          {navItems.map((item) => (
+            <Link 
+              key={item.href}
+              href={item.href} 
+              className={`nav-item ${pathname === item.href ? 'active' : ''}`}
             >
-              ✕
-            </button>
-            {navItems.map((item) => (
-              <Link 
-                key={item.href}
-                href={item.href} 
-                className={`mobile-nav-item ${pathname === item.href ? 'active' : ''}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mobile-nav-icon">✨</span>
-                {item.label}
-              </Link>
-            ))}
-          </div>
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
