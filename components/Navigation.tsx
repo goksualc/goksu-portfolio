@@ -1,75 +1,66 @@
 'use client'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
-  const [isNavVisible, setIsNavVisible] = useState(true)
-  const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const hero = document.getElementById('hero')
-    const fallbackThreshold = 100
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-    if (hero) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setIsNavVisible(entry.isIntersecting)
-        },
-        {
-          threshold: 0,
-          rootMargin: '0px 0px -5% 0px',
-        }
-      )
-      observer.observe(hero)
-      return () => observer.disconnect()
-    }
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
 
-    const handleScroll = () => {
-      setIsNavVisible(window.scrollY < fallbackThreshold)
-    }
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [pathname])
+  const close = () => setMenuOpen(false)
 
-  const navItems = [
-    { href: '/', label: 'HOME' },
-    { href: '/projects', label: 'PROJECTS' },
-    { href: '/experiences', label: 'EXPERIENCES' },
-    { href: '/education', label: 'EDUCATION' },
-    { href: '/blog', label: 'BLOG' }
+  const links = [
+    { href: '#about',      label: 'About' },
+    { href: '#education',  label: 'Education' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#content',    label: 'Content' },
+    { href: '#speaking',   label: 'Events' },
+    { href: '#work',       label: 'Projects' },
+    { href: '#contact',    label: 'Contact' },
   ]
 
   return (
-    <nav className={`nav-container ${!isNavVisible ? 'nav-hidden' : ''}`} aria-hidden={!isNavVisible}>
-      {/* Desktop Navigation */}
-      <div className="nav-menu desktop-nav">
-        {navItems.map((item) => (
-          <Link 
-            key={item.href}
-            href={item.href} 
-            className={`nav-item ${pathname === item.href ? 'active' : ''}`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
+    <>
+      <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+        <a href="#hero" className="nav-logo">Goksu Alcinkaya</a>
 
-      {/* Mobile Navigation - show all items directly, no hamburger */}
-      <div className="mobile-nav">
-        <div className="nav-menu">
-          {navItems.map((item) => (
-            <Link 
-              key={item.href}
-              href={item.href} 
-              className={`nav-item ${pathname === item.href ? 'active' : ''}`}
-            >
-              {item.label}
-            </Link>
+        {/* Desktop links */}
+        <div className="nav-links">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
           ))}
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className={`nav-mobile-toggle${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Toggle menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </nav>
+
+      {/* Mobile fullscreen menu */}
+      <div className={`nav-mobile-menu${menuOpen ? ' open' : ''}`}>
+        {links.map((l) => (
+          <a key={l.href} href={l.href} className="nav-mobile-item" onClick={close}>
+            {l.label}
+          </a>
+        ))}
       </div>
-    </nav>
+    </>
   )
 }
