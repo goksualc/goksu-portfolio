@@ -498,7 +498,7 @@ export default function Home() {
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
               >
                 <source src="/videos/gok.mov" type="video/mp4" />
               </video>
