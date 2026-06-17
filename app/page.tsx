@@ -18,6 +18,18 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+    const playDemos = () => {
+      document.querySelectorAll<HTMLVideoElement>('.work-demo-video').forEach(v => {
+        v.muted = true
+        v.play().catch(() => {})
+      })
+    }
+    playDemos()
+    document.addEventListener('touchstart', playDemos, { once: true })
+    return () => document.removeEventListener('touchstart', playDemos)
+  }, [])
+
+  useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
