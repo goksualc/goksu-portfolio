@@ -516,7 +516,7 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   height: auto;
   max-height: calc(100% - 0.5rem);
   object-fit: cover;
-  border-radius: 2rem;
+  border-radius: 1.1rem;
   box-shadow: 0 0 0 1px var(--border), 0 4px 20px rgba(0,0,0,0.12);
 }
 

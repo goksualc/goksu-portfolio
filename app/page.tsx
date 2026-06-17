@@ -5,6 +5,17 @@ import TweetEmbed from '../components/TweetEmbed'
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const heroVideoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const v = heroVideoRef.current
+    if (!v) return
+    v.muted = true
+    const tryPlay = () => v.play().catch(() => {})
+    tryPlay()
+    document.addEventListener('touchstart', tryPlay, { once: true })
+    return () => document.removeEventListener('touchstart', tryPlay)
+  }, [])
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -494,13 +505,14 @@ export default function Home() {
           <div className="hero-right reveal reveal-d2">
             <div className="hero-photo-frame">
               <video
+                ref={heroVideoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
               >
-                <source src="/videos/gok.mov" type="video/mp4" />
+                <source src="/videos/gok-web.mp4" type="video/mp4" />
               </video>
               <div className="hero-photo-overlay">
                 <div>
