@@ -5,17 +5,7 @@ import TweetEmbed from '../components/TweetEmbed'
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null)
-  const heroVideoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const v = heroVideoRef.current
-    if (!v) return
-    v.muted = true
-    const tryPlay = () => v.play().catch(() => {})
-    tryPlay()
-    document.addEventListener('touchstart', tryPlay, { once: true })
-    return () => document.removeEventListener('touchstart', tryPlay)
-  }, [])
+  const [heroRevealed, setHeroRevealed] = useState(false)
 
   useEffect(() => {
     const playDemos = () => {
@@ -180,7 +170,44 @@ export default function Home() {
     },
   ]
 
+  const mandateFeatures = [
+    'Agentic payments & trading governance',
+    'Programmable policy enforcement',
+    'Wallet security for AI-controlled accounts',
+    'Zero-knowledge policy proofs (Noir / UltraHonk)',
+    'Verifiable execution on every transaction',
+    'Protection against prompt injection attacks',
+    'MCP-native integration for AI agent pipelines',
+    'Developer tooling & SDK',
+  ]
+
+  const mandateStack = ['TypeScript', 'Solidity', 'Noir', 'UltraHonk', 'MCP', 'ZK Proofs']
+
+  const youtubeVideos = [
+    { videoId: 'CT6d9KghxLY', title: 'How to Build an MCP Wallet Agent' },
+    { videoId: 'KHIaloJncys', title: 'Building a Custom MoonPay Agent Skill | Solana Wallet Monitoring + Telegram Alerts' },
+    { videoId: 'yeOrnRKdxTU', title: 'Dynamic by Fireblocks Tutorial #1 — Introduction' },
+    { videoId: 'Md1v-K03hV0', title: 'Mandate Project Introduction' },
+    { videoId: 'lPjH3O-qjdA', title: 'Devrel Uni Cohort 7' },
+  ]
+
   const experiences = [
+    {
+      period: 'Jul 2026 – Present',
+      company: 'Avalanche Team1',
+      role: 'Collaborator',
+      desc: 'Collaborating with the Avalanche Team1 community in New York, contributing to local ecosystem growth, technical education, builder-focused initiatives, community events, and developer engagement.',
+      tags: ['Avalanche', 'Community', 'New York', 'Developer Engagement'],
+      logo: '/images/logos/avax-team1.svg',
+    },
+    {
+      period: 'Jun 2026 – Present',
+      company: 'OKX',
+      role: 'Technical Creator',
+      desc: 'Producing technical and educational content around crypto infrastructure, on-chain markets, tokenized assets, AI-enabled products, and the broader OKX ecosystem. Contract.',
+      tags: ['Content', 'Crypto', 'Education', 'OKX'],
+      logo: '/images/logos/okx.png',
+    },
     {
       period: 'Sep 2025 – Present',
       company: 'The City College of New York',
@@ -206,9 +233,9 @@ export default function Home() {
       logo: '/images/logos/tubitak.png',
     },
     {
-      period: 'Jan 2024 – Mar 2024',
+      period: 'Jan 2024 – Feb 2024',
       company: 'MetisL2',
-      role: 'DevRel Advocate',
+      role: 'DevRel Advocate · Part-time',
       desc: 'Promoted Layer 2 adoption through technical education and developer outreach. Created content bridging developers from Web2 to Ethereum L2 infrastructure. Represented Metis at industry events and hackathons.',
       tags: ['DevRel', 'L2', 'Education', 'Ethereum'],
       logo: '/images/logos/metis.png',
@@ -222,7 +249,7 @@ export default function Home() {
       logo: '/images/logos/solana.png',
     },
     {
-      period: 'Feb 2022 – Mar 2023',
+      period: 'Jan 2022 – Jan 2024',
       company: 'BlockchainIST Center',
       role: 'Research Assistant',
       desc: 'Supported academic blockchain research and contributed to technical reports on DLT infrastructure. Assisted in academic publishing and blockchain education initiatives.',
@@ -515,23 +542,27 @@ export default function Home() {
           </div>
 
           <div className="hero-right reveal reveal-d2">
-            <div className="hero-photo-frame">
-              <video
-                ref={heroVideoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-              >
-                <source src="/videos/gok-web.mp4" type="video/mp4" />
-              </video>
-              <div className="hero-photo-overlay">
-                <div>
-                  <div className="hero-photo-name">Goksu Alcinkaya</div>
-                  <div className="hero-photo-title">Computer Engineer · New York</div>
-                </div>
-              </div>
+            <div
+              className="hero-photo-frame"
+              tabIndex={0}
+              onMouseEnter={() => setHeroRevealed(true)}
+              onMouseLeave={() => setHeroRevealed(false)}
+              onFocus={() => setHeroRevealed(true)}
+              onBlur={() => setHeroRevealed(false)}
+              onClick={() => setHeroRevealed(p => !p)}
+              aria-label="Portrait of Goksu Alcinkaya — hover or tap to reveal photo"
+            >
+              <img
+                src="/memoji.png"
+                alt="Goksu Alcinkaya — memoji illustration"
+                className="hero-base-img"
+              />
+              <img
+                src="/me2.JPG"
+                alt="Goksu Alcinkaya, Computer Engineer based in New York City"
+                className={`hero-reveal-img${heroRevealed ? ' revealed' : ''}`}
+                aria-hidden={!heroRevealed}
+              />
             </div>
             <div className="hero-scroll-hint">
               <div className="hero-scroll-line" />
@@ -694,7 +725,7 @@ export default function Home() {
               <div key={i} className="exp-item reveal">
                 <div className="exp-left">
                   <div className="exp-logo-wrap">
-                    <img src={e.logo} alt={e.company} className="exp-logo" />
+                    <img src={e.logo} alt={e.company} className="exp-logo" onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none' }} />
                   </div>
                   <div className="exp-period">{e.period}</div>
                   <div className="exp-company">{e.company}</div>
@@ -714,11 +745,261 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── MANDATE ──────────────────────────────── */}
+      <section id="mandate" className="mandate-section">
+        <div className="mandate-inner">
+          <div className="mandate-header reveal">
+            <div className="mandate-eyebrow">
+              <span className="mandate-eyebrow-num">04</span>
+              <span className="mandate-eyebrow-divider" />
+              <span className="mandate-eyebrow-label">Featured Build</span>
+              <span className="mandate-status-pill">
+                <span className="mandate-status-dot" />
+                Active
+              </span>
+            </div>
+            <h2 className="mandate-headline">MANDATE</h2>
+            <p className="mandate-tagline">
+              Security and policy infrastructure for autonomous financial agents.
+            </p>
+          </div>
+
+          <div className="mandate-cols">
+            <div className="mandate-overview reveal">
+              <div className="mandate-block">
+                <div className="mandate-block-label">What it is</div>
+                <p className="mandate-block-text">
+                  MANDATE is a security and policy infrastructure layer that sits between
+                  an AI agent and a wallet or payment system. Before any transaction is
+                  executed, MANDATE enforces predefined policies — protecting against
+                  compromised agents, prompt injection, and unauthorized financial actions.
+                </p>
+              </div>
+
+              <div className="mandate-block">
+                <div className="mandate-block-label">Why MANDATE?</div>
+                <blockquote className="mandate-quote">
+                  &ldquo;As AI agents gain access to wallets and financial systems, the question
+                  isn&rsquo;t whether they&rsquo;ll be exploited — it&rsquo;s whether the guardrails exist
+                  before they are.&rdquo;
+                </blockquote>
+                <p className="mandate-block-text">
+                  Autonomous agents operating in financial contexts introduce new attack vectors:
+                  prompt injection, policy drift, compromised reasoning chains. MANDATE addresses
+                  this with cryptographically verifiable policy enforcement — not just software
+                  guards, but zero-knowledge proofs that policies were followed correctly.
+                </p>
+              </div>
+
+              <div className="mandate-links reveal">
+                <a
+                  href="https://www.mandate.help"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mandate-btn mandate-btn--primary"
+                >
+                  mandate.help <span>↗</span>
+                </a>
+                <a
+                  href="https://www.mandate.help/whitepaper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mandate-btn mandate-btn--outline"
+                >
+                  Whitepaper
+                </a>
+                <a
+                  href="https://www.mandate.help/docs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mandate-btn mandate-btn--ghost"
+                >
+                  Documentation <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="mandate-right reveal reveal-d2">
+              <div className="mandate-features-block">
+                <div className="mandate-block-label">Key Capabilities</div>
+                <ul className="mandate-feature-list">
+                  {mandateFeatures.map((f) => (
+                    <li key={f} className="mandate-feature-item">
+                      <span className="mandate-feature-dot" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mandate-stack-block">
+                <div className="mandate-block-label">Technical Stack</div>
+                <div className="mandate-stack-pills">
+                  {mandateStack.map((t) => (
+                    <span key={t} className="mandate-stack-pill">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tweet from builder */}
+          <div className="mandate-social reveal">
+            <div className="mandate-social-label">From the builder</div>
+            <div className="mandate-tweet-wrap">
+              <TweetEmbed tweetId="2081549844380819467" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DEVELOPER CONTENT ────────────────────── */}
+      <section id="content" className="section-wrap">
+        <div className="section-inner">
+          <div className="section-header">
+            <span className="section-num">05</span>
+            <hr className="hr-red" />
+            <h2 className="section-title reveal">Developer Content</h2>
+          </div>
+
+          <p className="writing-intro reveal">
+            I create tutorials, technical threads, and educational content for
+            developers building in Web3 and AI — on X, YouTube, and beyond.
+          </p>
+
+          {/* Format pills */}
+          <div className="content-formats reveal reveal-d1">
+            {['Technical Threads', 'YouTube Tutorials', 'X Spaces', 'Live Workshops', 'Technical Writing'].map(f => (
+              <span key={f} className="content-format-pill">{f}</span>
+            ))}
+          </div>
+
+          {/* Embedded tweets side by side */}
+          <div className="tweet-grid reveal reveal-d2">
+            <TweetEmbed tweetId="2065906468398735556" />
+            <TweetEmbed tweetId="2062623836470694170" />
+          </div>
+
+          {/* Substack writings */}
+          <div className="substack-block reveal reveal-d3">
+            <div className="substack-block-header">
+              <span className="substack-block-label">Substack</span>
+              <a href="https://0xgks.substack.com" target="_blank" rel="noopener noreferrer" className="substack-block-cta">
+                View all <span>↗</span>
+              </a>
+            </div>
+            <div className="substack-articles">
+              {[
+                {
+                  title: 'Becoming a Solutions Engineer',
+                  desc: 'A comprehensive series covering the fundamentals of technical solutions work — from API design patterns to integration architecture.',
+                  tag: 'Series',
+                },
+                {
+                  title: 'API Fundamentals for Developer Relations',
+                  desc: 'REST, GraphQL, webhooks — explained for developers stepping into customer-facing technical roles.',
+                  tag: 'Tutorial',
+                },
+                {
+                  title: "Building in Web3: A Developer's Guide",
+                  desc: 'Practical entry points into Web3 development, smart contracts, and the ecosystem tools that actually matter.',
+                  tag: 'Guide',
+                },
+              ].map((article, i) => (
+                <a
+                  key={i}
+                  href="https://0xgks.substack.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="substack-article"
+                >
+                  <div className="substack-article-meta">
+                    <span className="substack-article-tag">{article.tag}</span>
+                  </div>
+                  <div className="substack-article-title">{article.title}</div>
+                  <p className="substack-article-desc">{article.desc}</p>
+                  <span className="substack-article-read">Read on Substack ↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TECHNICAL VIDEOS ─────────────────────── */}
+      <section id="videos" className="section-wrap">
+        <div className="section-inner">
+          <div className="section-header">
+            <span className="section-num">06</span>
+            <hr className="hr-red" />
+            <h2 className="section-title reveal">Technical Videos</h2>
+          </div>
+
+          <div className="yt-intro-row reveal">
+            <p className="writing-intro" style={{ marginBottom: 0 }}>
+              Developer-focused videos on blockchain infrastructure, AI agents,
+              crypto markets, and emerging technologies.
+            </p>
+            <a
+              href="https://www.youtube.com/@goknyc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="yt-channel-btn"
+            >
+              @goknyc <span>↗</span>
+            </a>
+          </div>
+
+          <div className="yt-grid reveal reveal-d1">
+            {youtubeVideos.map((v, i) => (
+              <a
+                key={i}
+                href={`https://www.youtube.com/watch?v=${v.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="yt-card"
+              >
+                <div className="yt-thumb-wrap">
+                  <img
+                    src={`https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg`}
+                    alt={v.title}
+                    className="yt-thumb"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const sib = e.currentTarget.nextElementSibling as HTMLElement | null;
+                      if (sib) sib.style.display = 'flex';
+                    }}
+                  />
+                  <div className="yt-thumb-placeholder" style={{ display: 'none' }}>
+                    <span className="yt-placeholder-play">▶</span>
+                  </div>
+                  <div className="yt-play-badge">▶</div>
+                </div>
+                <div className="yt-card-info">
+                  <div className="yt-card-title">{v.title}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="yt-cta-row reveal reveal-d2">
+            <a
+              href="https://www.youtube.com/@goknyc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="yt-watch-all"
+            >
+              Watch more on YouTube <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── SPEAKING & EVENTS ────────────────────── */}
       <section id="speaking" className="section-wrap">
         <div className="section-inner">
           <div className="section-header">
-            <span className="section-num">05</span>
+            <span className="section-num">07</span>
             <hr className="hr-red" />
             <h2 className="section-title reveal">Speaking & Events</h2>
           </div>
@@ -821,84 +1102,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DEVELOPER CONTENT ────────────────────── */}
-      <section id="content" className="section-wrap">
-        <div className="section-inner">
-          <div className="section-header">
-            <span className="section-num">04</span>
-            <hr className="hr-red" />
-            <h2 className="section-title reveal">Developer Content</h2>
-          </div>
-
-          <p className="writing-intro reveal">
-            I create tutorials, technical threads, and educational content for
-            developers building in Web3 and AI — on X, YouTube, and beyond.
-          </p>
-
-          {/* Format pills */}
-          <div className="content-formats reveal reveal-d1">
-            {['Technical Threads', 'YouTube Tutorials', 'X Spaces', 'Live Workshops', 'Technical Writing'].map(f => (
-              <span key={f} className="content-format-pill">{f}</span>
-            ))}
-          </div>
-
-          {/* Embedded tweets side by side */}
-          <div className="tweet-grid reveal reveal-d2">
-            <TweetEmbed tweetId="2065906468398735556" />
-            <TweetEmbed tweetId="2062623836470694170" />
-          </div>
-
-          {/* Substack writings */}
-          <div className="substack-block reveal reveal-d3">
-            <div className="substack-block-header">
-              <span className="substack-block-label">Substack</span>
-              <a href="https://0xgks.substack.com" target="_blank" rel="noopener noreferrer" className="substack-block-cta">
-                View all <span>↗</span>
-              </a>
-            </div>
-            <div className="substack-articles">
-              {[
-                {
-                  title: 'Becoming a Solutions Engineer',
-                  desc: 'A comprehensive series covering the fundamentals of technical solutions work — from API design patterns to integration architecture.',
-                  tag: 'Series',
-                },
-                {
-                  title: 'API Fundamentals for Developer Relations',
-                  desc: 'REST, GraphQL, webhooks — explained for developers stepping into customer-facing technical roles.',
-                  tag: 'Tutorial',
-                },
-                {
-                  title: "Building in Web3: A Developer's Guide",
-                  desc: 'Practical entry points into Web3 development, smart contracts, and the ecosystem tools that actually matter.',
-                  tag: 'Guide',
-                },
-              ].map((article, i) => (
-                <a
-                  key={i}
-                  href="https://0xgks.substack.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="substack-article"
-                >
-                  <div className="substack-article-meta">
-                    <span className="substack-article-tag">{article.tag}</span>
-                  </div>
-                  <div className="substack-article-title">{article.title}</div>
-                  <p className="substack-article-desc">{article.desc}</p>
-                  <span className="substack-article-read">Read on Substack ↗</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── PROJECTS ─────────────────────────────── */}
       <section id="work" className="section-wrap">
         <div className="section-inner">
           <div className="section-header">
-            <span className="section-num">06</span>
+            <span className="section-num">08</span>
             <hr className="hr-red" />
             <h2 className="section-title reveal">Projects</h2>
           </div>
@@ -948,7 +1156,7 @@ export default function Home() {
       <section id="contact" className="section-wrap">
         <div className="section-inner">
           <div className="section-header">
-            <span className="section-num">07</span>
+            <span className="section-num">09</span>
             <hr className="hr-red" />
             <h2 className="section-title reveal">Contact</h2>
           </div>
@@ -967,12 +1175,13 @@ export default function Home() {
             </div>
             <div className="contact-links-col reveal reveal-d2">
               {[
-                { platform: 'Email', handle: 'goksualcinkaya@gmail.com', href: 'mailto:goksualcinkaya@gmail.com' },
-                { platform: 'LinkedIn', handle: 'goksualcinkaya', href: 'https://www.linkedin.com/in/goksualcinkaya' },
-                { platform: 'X / Twitter', handle: '@0xgks', href: 'http://x.com/0xgks' },
-                { platform: 'GitHub', handle: 'goksualc', href: 'https://github.com/goksualc' },
-                { platform: 'Telegram', handle: '@g0ksu9', href: 'https://t.me/g0ksu9' },
-                { platform: 'Instagram', handle: '@goksualcinkaya', href: 'http://instagram.com/goksualcinkaya' },
+                { platform: 'Email',     handle: 'goksualcinkaya@gmail.com', href: 'mailto:goksualcinkaya@gmail.com' },
+                { platform: 'LinkedIn',  handle: 'goksualcinkaya',           href: 'https://www.linkedin.com/in/goksualcinkaya' },
+                { platform: 'X / Twitter', handle: '@0xgks',                 href: 'http://x.com/0xgks' },
+                { platform: 'Substack',  handle: '0xgks.substack.com',       href: 'https://0xgks.substack.com' },
+                { platform: 'GitHub',    handle: 'goksualc',                 href: 'https://github.com/goksualc' },
+                { platform: 'Telegram',  handle: '@g0ksu9',                  href: 'https://t.me/g0ksu9' },
+                { platform: 'Instagram', handle: '@goksualcinkaya',          href: 'http://instagram.com/goksualcinkaya' },
               ].map((link) => (
                 <a
                   key={link.platform}
@@ -995,7 +1204,7 @@ export default function Home() {
       <footer>
         <div className="footer">
           <span className="footer-copy">
-            © 2025 Goksu Alcinkaya — Engineer, Builder, Educator
+            © 2026 Goksu Alcinkaya — Engineer, Builder, Educator
           </span>
           <a href="#hero" className="footer-back">Back to top ↑</a>
         </div>
