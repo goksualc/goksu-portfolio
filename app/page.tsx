@@ -10,8 +10,11 @@ import {
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' } as const
 
+const CV_URL = '/images/Goksu_Alcinkaya_CV.pdf'
+
 const nav = [
   ['about', 'About'],
+  [CV_URL, 'CV (Resume)'],
   ['research', 'Research'],
   ['education', 'Education'],
   ['experience', 'Experience'],
@@ -54,7 +57,7 @@ export default function Home() {
           {nav.map(([id, label], i) => (
             <span key={id}>
               {i > 0 && ' · '}
-              <a href={`#${id}`}>{label}</a>
+              {id === CV_URL ? <a href={id} {...ext}>{label}</a> : <a href={`#${id}`}>{label}</a>}
             </span>
           ))}
         </nav>
@@ -62,35 +65,37 @@ export default function Home() {
         <section id="about">
           <h2>About</h2>
           <p>
-            I approach engineering with intention and curiosity, shaping developer experiences, agentic
-            systems, and communities that feel human.
+            I am a software engineer working across applied cryptography, blockchain infrastructure, and
+            AI agent systems. I am currently pursuing an M.S. in Computer Science at Brooklyn College
+            (CUNY) in New York City, and I hold a B.S. in Computer Engineering from Bahçeşehir University,
+            completed on a full scholarship.
           </p>
           <p>
-            I&apos;m Goksu Alcinkaya, a Computer Engineer currently pursuing my Master&apos;s in Computer
-            Science at Brooklyn College (CUNY) in New York City. I hold a Bachelor&apos;s in Computer
-            Engineering from Bahçeşehir University on a full scholarship.
+            Over the past four years I have built products, conducted research, and led developer
+            communities in the blockchain ecosystem. My work has included implementing multi-party
+            computation primitives in Rust at The City College of New York, contributing to national
+            digital currency and digital identity research at TÜBİTAK BİLGEM, and growing university
+            developer communities with the Solana Foundation.
           </p>
           <p>
-            With 4+ years of hands-on experience at the intersection of blockchain, AI agents, and
-            developer relations, I&apos;ve built products, communities, and educational programs across
-            three continents. My work spans security research, decentralized identity, smart contracts,
-            and developer tooling.
+            Today I am a Founding Engineer at Poliviz, where I build the iOS application and contribute to
+            portfolio risk modeling. I am also developing MANDATE, a protocol that lets autonomous AI
+            agents operate under verifiable zero-knowledge mandates on Ethereum.
           </p>
           <p>
-            I&apos;m especially passionate about helping developers build confidently in emerging
-            ecosystems — whether that&apos;s Web3, AI agents, or whatever comes next. I believe the best
-            developer experience is one that makes complexity feel intuitive.
+            I care about making complex systems accessible to developers, through clear tooling, technical
+            education, and well-run communities.
           </p>
           <dl className="ac-facts">
-            <dt>Location</dt><dd>New York City, USA</dd>
-            <dt>Focus</dt><dd>AI Agents · DevRel · Web3</dd>
-            <dt>Education</dt><dd>M.S. CS, Brooklyn College</dd>
-            <dt>Skills</dt><dd>TypeScript · Swift · Rust · Solidity</dd>
+            <dt>Location</dt><dd>New York, NY</dd>
+            <dt>Focus</dt><dd>Applied Cryptography · AI Agents · Developer Relations</dd>
+            <dt>Education</dt><dd>M.S. Computer Science, Brooklyn College (CUNY)</dd>
+            <dt>Skills</dt><dd>Swift · Rust · TypeScript · Solidity · Noir</dd>
           </dl>
         </section>
 
         <section id="research">
-          <h2>Research &amp; Selected Projects</h2>
+          <h2>Research</h2>
 
           <article className="ac-featured" id="mandate">
             <h3>MANDATE <span className="ac-status">(active)</span></h3>
@@ -245,9 +250,11 @@ export default function Home() {
             {projects.map((p) => (
               <li key={p.title}>
                 <div className="ac-date">{p.year}</div>
-                <div>
-                  <a href={p.href} {...ext}><strong>{p.title}</strong></a>
-                  <p>{p.desc}</p>
+                <div className={p.demo ? 'ac-withvideo' : undefined}>
+                  <div>
+                    <a href={p.href} {...ext}><strong>{p.title}</strong></a>
+                    <p>{p.desc}</p>
+                  </div>
                   {p.demo && <DemoVideo src={p.demo} />}
                 </div>
               </li>

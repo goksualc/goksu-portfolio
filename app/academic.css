@@ -51,7 +51,9 @@ body:has(.ac) { background: #fff; }
 .ac-sub { margin-top: 0.5rem !important; }
 .ac-bullets { list-style: disc !important; padding-left: 1.3rem !important; margin: 0.3rem 0 0.5rem !important; }
 .ac-plain > li { margin-bottom: 0.7rem; }
-.ac-projects .ac-demo { width: 100%; max-width: 220px; margin-top: 0.6rem; border: 1px solid var(--rule); }
+.ac-withvideo { display: flex; gap: 1.2rem; align-items: flex-start; justify-content: space-between; }
+.ac-withvideo > div { min-width: 0; }
+.ac-projects .ac-demo { flex: 0 0 150px; width: 150px; height: auto; border: 1px solid var(--rule); }
 
 .ac-tweets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .ac-tweets .tweet-embed-wrap, .ac-more .tweet-embed-wrap { margin: 0; max-width: 100%; }
@@ -77,6 +79,8 @@ body:has(.ac) { background: #fff; }
   .ac-photo { flex-basis: auto; width: 150px; }
   .ac-list > li { grid-template-columns: 1fr; }
   .ac-tweets { grid-template-columns: 1fr; }
+  .ac-withvideo { gap: 0.8rem; }
+  .ac-projects .ac-demo { flex-basis: 110px; width: 110px; }
   .ac-ev-body { padding-left: 0; }
   .ac-events summary { flex-direction: column; gap: 0; }
   .ac-facts { grid-template-columns: 1fr; }

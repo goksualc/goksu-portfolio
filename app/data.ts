@@ -162,8 +162,10 @@ export const experiences: {
   logo: string
 }[] = [
   {
+    period: 'Aug 2026 – Present',
     company: 'Poliviz',
-    role: 'Machine Learning & Algorithms Engineer',
+    role: 'Founding Engineer',
+    desc: 'Developing portfolio analysis algorithms that model relationships between stocks, sectors, financial news, and market signals to evaluate portfolio risk and exposure. Building and maintaining the iOS application using Swift and SwiftUI, integrating Supabase, backend APIs, and interactive financial dashboards.',
     tags: [],
     logo: '/images/logos/poliviz-icon.svg',
   },
@@ -478,13 +480,6 @@ export const education = [
     desc: 'Information Systems track. New York City.',
   },
   {
-    period: 'Aug 2024 – May 2025',
-    institution: 'Bay Atlantic University',
-    degree: 'Study Abroad · Full Scholarship',
-    location: 'Washington, D.C.',
-    desc: 'Information Technology coursework. Washington, D.C.',
-  },
-  {
     period: 'Oct 2021 – Jun 2025',
     institution: 'Bahçeşehir University',
     degree: 'B.S. Computer Engineering · Full Scholarship',
@@ -524,6 +519,8 @@ export const community = [
 ]
 
 export const orgLinks: Record<string, string> = {
+  Poliviz: 'https://www.poliviz.com',
+  'BAU Blockchain Club': 'https://www.instagram.com/baublockchain/',
   'Avalanche Team1': 'https://www.avax.network/community',
   OKX: 'https://www.okx.com',
   'The City College of New York': 'https://www.ccny.cuny.edu',
@@ -563,5 +560,4 @@ export const contactLinks = [
   { platform: 'Substack', handle: '0xgks.substack.com', href: 'https://0xgks.substack.com' },
   { platform: 'GitHub', handle: 'goksualc', href: 'https://github.com/goksualc' },
   { platform: 'Telegram', handle: '@g0ksu9', href: 'https://t.me/g0ksu9' },
-  { platform: 'Instagram', handle: '@goksualcinkaya', href: 'http://instagram.com/goksualcinkaya' },
 ]
