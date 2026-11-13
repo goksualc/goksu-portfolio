@@ -186,7 +186,7 @@ export const experiences: {
     logo: '/images/logos/okx.png',
   },
   {
-    period: 'Sep 2025 – Present',
+    period: 'Sep 2025 – Feb 2026',
     company: 'The City College of New York',
     role: 'Fluid MPC — Research Contributor',
     desc: 'Working on Fluid Multiparty Computation (Fluid MPC) with a focus on dynamic committees, scalability, and robustness in distributed cryptographic systems. Implementing core protocol components in Rust.',

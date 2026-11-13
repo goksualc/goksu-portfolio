@@ -33,9 +33,6 @@ body:has(.ac) { background: #fff; }
 .ac-nav a, .ac-nav span { white-space: nowrap; }
 
 .ac-meta { color: var(--muted); font-size: 0.92rem; }
-.ac-facts { display: grid; grid-template-columns: 7rem 1fr; gap: 0.2rem 1rem; }
-.ac-facts dt { color: var(--muted); }
-.ac-facts dd { margin: 0; }
 
 .ac-featured { border-left: 3px solid var(--link); padding-left: 1rem; margin: 0 0 1.8rem; }
 .ac-featured h3 { font-size: 1.2rem; margin-top: 0; }
@@ -83,7 +80,6 @@ body:has(.ac) { background: #fff; }
   .ac-projects .ac-demo { flex-basis: 110px; width: 110px; }
   .ac-ev-body { padding-left: 0; }
   .ac-events summary { flex-direction: column; gap: 0; }
-  .ac-facts { grid-template-columns: 1fr; }
-  .ac-nav a, .ac-nav span { white-space: normal; }
+    .ac-nav a, .ac-nav span { white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

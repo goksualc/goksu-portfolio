@@ -35,11 +35,7 @@ export default function Home() {
           <div>
             <h1>Goksu Alcinkaya</h1>
             <p>
-              Engineer crafting developer experiences, agentic systems, and communities around emerging
-              technologies. Engineer · DevRel · Community Builder.
-            </p>
-            <p>
-              M.S. student in Computer Science at Brooklyn College (CUNY). Based in New York City.
+              Computer engineer based in New York City
             </p>
             <p className="ac-links">
               {contactLinks.map((l, i) => (
@@ -86,12 +82,6 @@ export default function Home() {
             I care about making complex systems accessible to developers, through clear tooling, technical
             education, and well-run communities.
           </p>
-          <dl className="ac-facts">
-            <dt>Location</dt><dd>New York, NY</dd>
-            <dt>Focus</dt><dd>Applied Cryptography · AI Agents · Developer Relations</dd>
-            <dt>Education</dt><dd>M.S. Computer Science, Brooklyn College (CUNY)</dd>
-            <dt>Skills</dt><dd>Swift · Rust · TypeScript · Solidity · Noir</dd>
-          </dl>
         </section>
 
         <section id="research">
