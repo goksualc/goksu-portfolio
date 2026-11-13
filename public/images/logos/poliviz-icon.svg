@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="1200" height="1200">
+  <title>poliviz</title>
+  <g fill="#34765A">
+    <path d="M100 0H200A100 100 0 0 1 200 200V100H100Z"/>
+    <path d="M0 100H100V200H150V300H0Z"/>
+  </g>
+</svg>

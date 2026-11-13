@@ -1,0 +1,85 @@
+/* Academic home page. Everything is scoped to .ac so legacy routes are unaffected. */
+body:has(.ac) { background: #fff; }
+.ac {
+  --ink: #222;
+  --muted: #666;
+  --rule: #ddd;
+  --link: #0645ad;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  color: var(--ink);
+  background: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+.ac a { color: var(--link); text-decoration: none; }
+.ac a:hover, .ac a:focus-visible { text-decoration: underline; }
+.ac p, .ac ul, .ac dl, .ac blockquote { margin: 0 0 0.8rem; }
+.ac h1 { font-size: 2rem; font-weight: 600; margin: 0 0 0.6rem; line-height: 1.2; }
+.ac h2 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.8rem; padding-bottom: 0.25rem; border-bottom: 1px solid var(--rule); }
+.ac h3 { font-size: 1.05rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
+.ac section { margin-top: 2.4rem; scroll-margin-top: 1rem; }
+.ac ul { list-style: none; padding: 0; }
+.ac strong { font-weight: 600; }
+
+.ac-header { display: flex; gap: 2rem; align-items: flex-start; justify-content: space-between; }
+.ac-photo { flex: 0 0 180px; width: 180px; height: auto; aspect-ratio: 682 / 828; object-fit: cover; display: block; }
+.ac-logo { display: inline-block; width: 16px; height: 16px; object-fit: contain; vertical-align: -2px; margin-right: 0.3rem; }
+
+.ac-nav { margin-top: 1.2rem; padding: 0.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 0.95rem; }
+.ac-nav a, .ac-nav span { white-space: nowrap; }
+
+.ac-meta { color: var(--muted); font-size: 0.92rem; }
+.ac-facts { display: grid; grid-template-columns: 7rem 1fr; gap: 0.2rem 1rem; }
+.ac-facts dt { color: var(--muted); }
+.ac-facts dd { margin: 0; }
+
+.ac-featured { border-left: 3px solid var(--link); padding-left: 1rem; margin: 0 0 1.8rem; }
+.ac-featured h3 { font-size: 1.2rem; margin-top: 0; }
+.ac-featured blockquote { margin-left: 0; padding-left: 1rem; border-left: 1px solid var(--rule); color: #444; font-style: italic; }
+.ac-featured ul:not(.ac-plain) { list-style: disc; padding-left: 1.3rem; }
+.ac-status { font-weight: 400; color: var(--muted); font-size: 0.9rem; }
+.ac-more summary { cursor: pointer; color: var(--link); }
+.ac-more summary:hover { text-decoration: underline; }
+
+.ac-list > li { display: grid; grid-template-columns: 11rem 1fr; gap: 0 1rem; margin-bottom: 1.1rem; }
+.ac-list p { margin: 0.25rem 0 0; }
+.ac-date { color: var(--muted); font-size: 0.92rem; }
+.ac-sub { margin-top: 0.5rem !important; }
+.ac-bullets { list-style: disc !important; padding-left: 1.3rem !important; margin: 0.3rem 0 0.5rem !important; }
+.ac-plain > li { margin-bottom: 0.7rem; }
+.ac-projects .ac-demo { width: 100%; max-width: 220px; margin-top: 0.6rem; border: 1px solid var(--rule); }
+
+.ac-tweets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.ac-tweets .tweet-embed-wrap, .ac-more .tweet-embed-wrap { margin: 0; max-width: 100%; }
+
+.ac-filter { font-size: 0.95rem; }
+.ac-filter button { background: none; border: 0; padding: 0; font: inherit; color: var(--link); cursor: pointer; }
+.ac-filter button:hover { text-decoration: underline; }
+.ac-filter button.active { color: var(--ink); font-weight: 600; text-decoration: none; }
+.ac-events li { border-bottom: 1px solid #eee; }
+.ac-events summary { display: flex; gap: 1rem; padding: 0.4rem 0; cursor: pointer; }
+.ac-events summary:hover strong { text-decoration: underline; }
+.ac-ev-year { flex: 0 0 5.5rem; color: var(--muted); font-size: 0.92rem; }
+.ac-ev-body { padding: 0 0 0.8rem 6.5rem; }
+.ac-ev-photo { max-width: 420px; width: 100%; height: auto; }
+.ac-video { position: relative; max-width: 480px; aspect-ratio: 16 / 9; }
+.ac-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.ac-footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 640px) {
+  .ac h1 { font-size: 1.6rem; }
+  .ac-header { flex-direction: column-reverse; gap: 1rem; }
+  .ac-photo { flex-basis: auto; width: 150px; }
+  .ac-list > li { grid-template-columns: 1fr; }
+  .ac-tweets { grid-template-columns: 1fr; }
+  .ac-ev-body { padding-left: 0; }
+  .ac-events summary { flex-direction: column; gap: 0; }
+  .ac-facts { grid-template-columns: 1fr; }
+  .ac-nav a, .ac-nav span { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
