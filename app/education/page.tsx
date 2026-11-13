@@ -33,7 +33,7 @@ export default function Education() {
       location: "Istanbul, Türkiye",
       period: "October 2021 – June 2025",
       emoji: "🛠️",
-      description: "Capstone Project — FinWise: A personal finance and investment guidance mobile app that helps users understand their financial profiles, assess risk tolerance, and receive tailored investment recommendations.",
+      description: "Capstone Project, FinWise: A personal finance and investment guidance mobile app that helps users understand their financial profiles, assess risk tolerance, and receive tailored investment recommendations.",
       capstone: {
         title: "Capstone Project: FinWise",
         summary: "FinWise delivers beginner-friendly investing guidance with an adaptive interface based on user risk categories. It includes in‑app educational content, FAQs, and a clean mobile‑first design.",

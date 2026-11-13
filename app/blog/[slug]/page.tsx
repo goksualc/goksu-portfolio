@@ -20,7 +20,7 @@ export default function BlogPost() {
         <h2>The Evolution of Web Development</h2>
         <p>Traditional web development has been built around centralized architectures where users rely on trusted intermediaries to manage their data and transactions. Web3 represents a fundamental shift toward decentralized systems where users have direct control over their digital assets and interactions.</p>
         
-        <p>This shift is not just technological—it's philosophical. We're moving from a world where "big tech" owns and controls user data to one where individuals have true ownership and agency over their digital lives.</p>
+        <p>This shift is not just technological; it's philosophical. We're moving from a world where "big tech" owns and controls user data to one where individuals have true ownership and agency over their digital lives.</p>
         
         <h2>Key Technologies Shaping the Future</h2>
         <h3>Blockchain and Smart Contracts</h3>
@@ -51,7 +51,7 @@ export default function BlogPost() {
       title: "BUILDING COMMUNITIES IN THE DIGITAL AGE",
       excerpt: "Lessons learned from co-founding H.E.R. DAO Türkiye and fostering inclusive spaces in the blockchain ecosystem.",
       content: `
-        <p>Community building in the digital age requires a delicate balance of technology, human connection, and shared purpose. As the co-founder of H.E.R. DAO Türkiye, I've learned that successful communities are built on more than just shared interests—they're built on shared values and mutual support.</p>
+        <p>Community building in the digital age requires a delicate balance of technology, human connection, and shared purpose. As the co-founder of H.E.R. DAO Türkiye, I've learned that successful communities are built on more than just shared interests; they're built on shared values and mutual support.</p>
         
         <h2>The Power of Inclusive Spaces</h2>
         <p>In the blockchain ecosystem, where technical barriers can be intimidating, creating inclusive spaces is crucial. H.E.R. DAO Türkiye was founded with the mission of empowering women in technology, but our approach goes beyond simple representation.</p>
@@ -59,17 +59,17 @@ export default function BlogPost() {
         <p>We focus on creating environments where learning is encouraged, questions are welcomed, and growth is celebrated. This means providing resources, mentorship, and opportunities for hands-on experience with blockchain technologies.</p>
         
         <h2>Digital Tools, Human Connections</h2>
-        <p>While our community exists primarily in digital spaces—Discord, Twitter, and virtual meetups—we've found that the most meaningful connections happen when we bridge the gap between online and offline interactions.</p>
+        <p>While our community exists primarily in digital spaces (Discord, Twitter, and virtual meetups), we've found that the most meaningful connections happen when we bridge the gap between online and offline interactions.</p>
         
         <p>Regular virtual workshops, hackathons, and networking events help members build relationships that extend beyond the digital realm. These connections become the foundation for collaboration, mentorship, and mutual support.</p>
         
         <h2>Challenges and Solutions</h2>
         <p>Building a community in the blockchain space comes with unique challenges. The technology is complex, the landscape is constantly evolving, and there's often a steep learning curve for newcomers.</p>
         
-        <p>We've addressed these challenges by creating structured learning paths, providing mentorship programs, and organizing regular events that cater to different skill levels. We also emphasize the importance of psychological safety—creating spaces where people feel comfortable asking questions and making mistakes.</p>
+        <p>We've addressed these challenges by creating structured learning paths, providing mentorship programs, and organizing regular events that cater to different skill levels. We also emphasize the importance of psychological safety, creating spaces where people feel comfortable asking questions and making mistakes.</p>
         
         <h2>Measuring Success</h2>
-        <p>Success in community building isn't just about numbers—it's about impact. We measure our success by the stories of our members: the developer who landed their first blockchain job, the student who built their first smart contract, the professional who found their passion in Web3.</p>
+        <p>Success in community building isn't just about numbers; it's about impact. We measure our success by the stories of our members: the developer who landed their first blockchain job, the student who built their first smart contract, the professional who found their passion in Web3.</p>
         
         <p>These individual successes create a ripple effect, inspiring others and strengthening the community as a whole.</p>
         
@@ -89,7 +89,7 @@ export default function BlogPost() {
       title: "FROM HACKATHONS TO INNOVATION",
       excerpt: "My journey as a hackathon mentor and how these intense coding sessions spark creativity and drive technological breakthroughs.",
       content: `
-        <p>Hackathons are more than just coding competitions—they're incubators for innovation, creativity, and collaboration. As a hackathon mentor, I've witnessed firsthand how these intense, time-limited events can transform ideas into reality and push the boundaries of what's possible.</p>
+        <p>Hackathons are more than just coding competitions; they're incubators for innovation, creativity, and collaboration. As a hackathon mentor, I've witnessed firsthand how these intense, time-limited events can transform ideas into reality and push the boundaries of what's possible.</p>
         
         <h2>The Hackathon Environment</h2>
         <p>There's something magical about the hackathon environment. The energy is electric, the creativity is palpable, and the sense of possibility is limitless. In just 24-48 hours, teams form, ideas take shape, and prototypes emerge that might otherwise take months to develop.</p>
@@ -99,7 +99,7 @@ export default function BlogPost() {
         <h2>The Role of Mentorship</h2>
         <p>As a mentor, my role is to guide teams through the development process while encouraging them to think creatively and take risks. This involves helping them break down complex problems, suggesting alternative approaches, and providing technical guidance when needed.</p>
         
-        <p>But mentorship isn't just about technical skills—it's also about fostering a growth mindset. I encourage teams to view challenges as opportunities, to learn from failures, and to celebrate their successes, no matter how small.</p>
+        <p>But mentorship isn't just about technical skills; it's also about fostering a growth mindset. I encourage teams to view challenges as opportunities, to learn from failures, and to celebrate their successes, no matter how small.</p>
         
         <h2>Innovation Through Constraints</h2>
         <p>Hackathons prove that constraints can be catalysts for innovation. The time limitations, resource constraints, and pressure to deliver force participants to think outside the box and find creative solutions to complex problems.</p>
@@ -137,7 +137,7 @@ export default function BlogPost() {
         <p>In an age of high-resolution displays and sophisticated design tools, there's something compelling about the simplicity and charm of pixel art. The constraints of limited resolution and color palettes force designers to think more carefully about every pixel, every color choice, and every design decision.</p>
         
         <h2>The Philosophy of Pixel Art</h2>
-        <p>Pixel art is more than just a nostalgic aesthetic—it's a design philosophy that emphasizes intentionality, clarity, and purpose. When you're working with limited pixels, every element must serve a specific function and contribute to the overall design.</p>
+        <p>Pixel art is more than just a nostalgic aesthetic; it's a design philosophy that emphasizes intentionality, clarity, and purpose. When you're working with limited pixels, every element must serve a specific function and contribute to the overall design.</p>
         
         <p>This constraint-driven approach often leads to more thoughtful and effective designs. By removing the ability to rely on subtle gradients and complex effects, designers must focus on fundamentals like composition, color theory, and user experience.</p>
         
@@ -228,7 +228,7 @@ export default function BlogPost() {
         <p>New York City's tech scene is a unique blend of innovation, diversity, and opportunity. As a developer navigating this ecosystem, I've discovered that NYC offers something that few other tech hubs can match: a perfect storm of talent, capital, and diverse perspectives.</p>
         
         <h2>The NYC Advantage</h2>
-        <p>What makes NYC's tech scene special is its diversity—not just in terms of people, but in terms of industries and applications. Unlike Silicon Valley's focus on consumer tech, NYC's tech ecosystem spans finance, media, fashion, healthcare, and more.</p>
+        <p>What makes NYC's tech scene special is its diversity, not just in terms of people, but in terms of industries and applications. Unlike Silicon Valley's focus on consumer tech, NYC's tech ecosystem spans finance, media, fashion, healthcare, and more.</p>
         
         <p>This diversity creates opportunities for developers to work on problems that have real-world impact across multiple domains. Whether you're interested in fintech, edtech, healthtech, or any other sector, NYC likely has a thriving community and numerous opportunities.</p>
         

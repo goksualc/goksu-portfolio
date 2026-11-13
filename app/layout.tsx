@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Göksu Alçınkaya — Engineer, Builder, Educator",
+  title: "Göksu Alçınkaya | Engineer, Builder, Educator",
   description:
     "Computer Engineer & Master's in CS candidate based in New York. Specializing in AI Agents, Developer Relations, Blockchain Infrastructure, and Community Building.",
   icons: {

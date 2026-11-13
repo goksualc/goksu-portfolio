@@ -8,7 +8,7 @@ Personal portfolio website with an editorial design aesthetic.
 
 ## About
 
-This portfolio takes an editorial, magazine-inspired approach — clean typography, structured layouts, and a cream/red color palette. It highlights my work in Web3, developer relations, and software engineering.
+This portfolio takes an editorial, magazine-inspired approach, clean typography, structured layouts, and a cream/red color palette. It highlights my work in Web3, developer relations, and software engineering.
 
 Sections:
 - **Home** – Introduction and featured work

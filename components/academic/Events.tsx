@@ -12,7 +12,7 @@ function EventItem({ ev }: { ev: Ev }) {
         <summary>
           <span className="ac-ev-year">{ev.year}</span>
           <span>
-            <strong>{ev.name}</strong>, {ev.location} — <em>{ev.role}</em>
+            <strong>{ev.name}</strong>, {ev.location} · <em>{ev.role}</em>
           </span>
         </summary>
         <div className="ac-ev-body">

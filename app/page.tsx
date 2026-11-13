@@ -95,7 +95,7 @@ export default function Home() {
             <p>
               <strong>What it is.</strong> MANDATE is a security and policy infrastructure layer that sits
               between an AI agent and a wallet or payment system. Before any transaction is executed,
-              MANDATE enforces predefined policies — protecting against compromised agents, prompt
+              MANDATE enforces predefined policies, protecting against compromised agents, prompt
               injection, and unauthorized financial actions.
             </p>
             <p>
@@ -103,13 +103,13 @@ export default function Home() {
             </p>
             <blockquote>
               &ldquo;As AI agents gain access to wallets and financial systems, the question isn&rsquo;t
-              whether they&rsquo;ll be exploited — it&rsquo;s whether the guardrails exist before they
+              whether they&rsquo;ll be exploited; it&rsquo;s whether the guardrails exist before they
               are.&rdquo;
             </blockquote>
             <p>
               Autonomous agents operating in financial contexts introduce new attack vectors: prompt
               injection, policy drift, compromised reasoning chains. MANDATE addresses this with
-              cryptographically verifiable policy enforcement — not just software guards, but
+              cryptographically verifiable policy enforcement: not just software guards, but
               zero-knowledge proofs that policies were followed correctly.
             </p>
             <p><strong>Key capabilities.</strong></p>
@@ -145,7 +145,7 @@ export default function Home() {
               <li key={e.institution}>
                 <div className="ac-date">{e.period}</div>
                 <div>
-                  <strong>{e.institution}</strong> — {e.degree}. {e.location}.
+                  <strong>{e.institution}</strong>, {e.degree}. {e.location}.
                   <br />
                   {e.desc}
                   {e.capstone && (
@@ -195,7 +195,7 @@ export default function Home() {
           <h2>Writing &amp; Technical Content</h2>
           <p>
             I create tutorials, technical threads, and educational content for developers building in
-            Web3 and AI — on X, YouTube, and beyond.
+            Web3 and AI, on X, YouTube, and beyond.
           </p>
 
           <h3>Substack</h3>
@@ -269,7 +269,7 @@ export default function Home() {
       </main>
 
       <footer className="ac-footer">
-        © 2026 Goksu Alcinkaya — Engineer, Builder, Educator · <a href="#top">Back to top</a>
+        © 2026 Goksu Alcinkaya. Engineer, Builder, Educator · <a href="#top">Back to top</a>
       </footer>
     </div>
   )

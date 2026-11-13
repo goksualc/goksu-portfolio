@@ -763,7 +763,7 @@ export default function Experiences() {
               <h2 className="bau-club-title">BAU Blockchain Club Events</h2>
               <div className="bau-club-content">
                 <p className="bau-club-description">
-                  As the president of the BAU Blockchain Club, I onboarded many Web2 developers into Web3 and organized numerous technical and non-technical events and workshops—all of which were at full capacity during my tenure, fostering a strong and engaged blockchain community.
+                  As the president of the BAU Blockchain Club, I onboarded many Web2 developers into Web3 and organized numerous technical and non-technical events and workshops, all of which were at full capacity during my tenure, fostering a strong and engaged blockchain community.
                 </p>
                 <div className="bau-club-images">
                   <div className="bau-club-image-container">
