@@ -120,7 +120,7 @@ export default function Home() {
             <p>
               Links:{' '}
               <a href="https://www.mandate.help" {...ext}>mandate.help</a> ·{' '}
-              <a href="https://www.mandate.help/whitepaper" {...ext}>Whitepaper</a> ·{' '}
+              <a href="https://www.mandate.help/MANDATE.pdf" {...ext}>Whitepaper</a> ·{' '}
               <a href="https://www.mandate.help/docs" {...ext}>Documentation</a>
             </p>
             <details className="ac-more">
